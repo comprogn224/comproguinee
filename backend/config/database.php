@@ -31,4 +31,13 @@ class Database {
         return $this->conn;
     }
 }
+
+/**
+ * Fonction helper pour obtenir une connexion à la base de données
+ * Compatible avec les APIs existantes
+ */
+function getDbConnection() {
+    $database = new Database();
+    return $database->getConnection();
+}
 ?>

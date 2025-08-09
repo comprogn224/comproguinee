@@ -10,9 +10,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { useToast } from "@/hooks/use-toast"
+import { useServiceRequests } from "@/hooks/useServiceRequests"
 
 export default function ServiceRequestPage() {
   const { toast } = useToast()
+  const { submitRequest, isLoading, error } = useServiceRequests()
   const [formData, setFormData] = useState({
     nom: "",
     prenom: "",
@@ -57,28 +59,56 @@ export default function ServiceRequestPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    // Simulation d'envoi
-    toast({
-      title: "Demande envoyée !",
-      description: "Nous vous contacterons dans les 24h pour discuter de votre projet.",
-    })
+    // Validation côté client
+    if (!formData.nom || !formData.prenom || !formData.email || !formData.description || formData.services.length === 0) {
+      toast({
+        title: "Erreur de validation",
+        description: "Veuillez remplir tous les champs obligatoires.",
+        variant: "destructive"
+      })
+      return
+    }
     
-    // Reset form
-    setFormData({
-      nom: "",
-      prenom: "",
-      entreprise: "",
-      email: "",
-      telephone: "",
-      services: [],
-      budget: "",
-      delai: "",
-      description: "",
-      objectifs: "",
-      cible: "",
-      concurrents: "",
-      existant: ""
-    })
+    try {
+      const result = await submitRequest(formData)
+      
+      if (result.success) {
+        toast({
+          title: "Demande envoyée !",
+          description: result.message || "Nous vous contacterons dans les 24h pour discuter de votre projet.",
+        })
+        
+        // Reset form après succès
+        setFormData({
+          nom: "",
+          prenom: "",
+          entreprise: "",
+          email: "",
+          telephone: "",
+          services: [],
+          budget: "",
+          delai: "",
+          description: "",
+          objectifs: "",
+          cible: "",
+          concurrents: "",
+          existant: ""
+        })
+      } else {
+        toast({
+          title: "Erreur d'envoi",
+          description: result.error || "Une erreur est survenue lors de l'envoi de votre demande.",
+          variant: "destructive"
+        })
+      }
+    } catch (err) {
+      console.error('Erreur lors de l\'envoi:', err)
+      toast({
+        title: "Erreur d'envoi",
+        description: "Une erreur est survenue. Veuillez réessayer plus tard.",
+        variant: "destructive"
+      })
+    }
   }
 
   return (
@@ -291,8 +321,13 @@ export default function ServiceRequestPage() {
               </Card>
 
               <div className="text-center">
-                <Button type="submit" size="lg" className="bg-red-600 hover:bg-red-700 px-8">
-                  Envoyer ma demande
+                <Button 
+                  type="submit" 
+                  size="lg" 
+                  className="bg-red-600 hover:bg-red-700 px-8"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Envoi en cours..." : "Envoyer ma demande"}
                 </Button>
                 <p className="text-sm text-gray-600 mt-4">
                   Nous vous contacterons dans les 24h pour discuter de votre projet
