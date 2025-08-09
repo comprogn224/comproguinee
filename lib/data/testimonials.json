@@ -1,0 +1,58 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Amadou Diallo",
+      "company": "StartUp Tech Conakry",
+      "text": "Com'Pro Guinée a transformé notre présence digitale. Leur expertise nous a permis d'atteindre de nouveaux clients et d'augmenter notre chiffre d'affaires de 150%.",
+      "rating": 5,
+      "avatar": "/avatars/amadou.jpg",
+      "date": "2024-12-15"
+    },
+    {
+      "id": 2,
+      "name": "Fatoumata Camara",
+      "company": "Boutique Mode Guinée",
+      "text": "Une équipe professionnelle qui comprend les enjeux du marché guinéen. Résultats au rendez-vous ! Nos ventes en ligne ont triplé.",
+      "rating": 5,
+      "avatar": "/avatars/fatoumata.jpg",
+      "date": "2024-11-28"
+    },
+    {
+      "id": 3,
+      "name": "Ibrahim Touré",
+      "company": "Restaurant Le Baobab",
+      "text": "Grâce à leur stratégie social media, notre restaurant est maintenant connu dans tout Conakry. Nous avons 300% plus de réservations.",
+      "rating": 5,
+      "avatar": "/avatars/ibrahim.jpg",
+      "date": "2024-10-20"
+    },
+    {
+      "id": 4,
+      "name": "Mariama Bah",
+      "company": "Clinique Santé Plus",
+      "text": "Com'Pro Guinée nous a aidés à digitaliser notre communication patient. Interface moderne et service client exceptionnel.",
+      "rating": 5,
+      "avatar": "/avatars/mariama.jpg",
+      "date": "2024-09-12"
+    },
+    {
+      "id": 5,
+      "name": "Ousmane Kaba",
+      "company": "Transport Express GN",
+      "text": "Leur solution de gestion des réseaux sociaux a révolutionné notre approche marketing. ROI impressionnant !",
+      "rating": 5,
+      "avatar": "/avatars/ousmane.jpg",
+      "date": "2024-08-05"
+    },
+    {
+      "id": 6,
+      "name": "Aissatou Diané",
+      "company": "École Privée Excellence",
+      "text": "Communication digitale parfaitement adaptée au secteur éducatif guinéen. Parents et élèves sont ravis.",
+      "rating": 5,
+      "avatar": "/avatars/aissatou.jpg",
+      "date": "2024-07-18"
+    }
+  ]
+}
