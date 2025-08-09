@@ -3,12 +3,17 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from 'lucide-react'
-import { usePathname } from "next/navigation"
+import { Menu, X, LogOut, User } from 'lucide-react'
+import { usePathname, useRouter } from "next/navigation"
+import { useAuth } from "@/hooks/useAuth"
+import { useToast } from "@/hooks/use-toast"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
+  const { user, logout, isAuthenticated } = useAuth()
+  const { toast } = useToast()
 
   const navigation = [
     { name: "Accueil", href: "/" },
@@ -18,6 +23,15 @@ export function Navbar() {
     { name: "Témoignages", href: "/testimonages" },
     { name: "Contact", href: "/contact" },
   ]
+
+  const handleLogout = () => {
+    logout()
+    toast({
+      title: "Déconnexion réussie",
+      description: "Vous avez été déconnecté avec succès.",
+    })
+    router.push('/login')
+  }
 
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
@@ -47,9 +61,25 @@ export function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Button asChild className="bg-red-600 hover:bg-red-700">
-              <Link href="/demande-service">Demander un devis</Link>
-            </Button>
+            
+            {/* User info and logout button */}
+            {isAuthenticated && user && (
+              <div className="flex items-center space-x-4 ml-4 pl-4 border-l border-gray-200">
+                <div className="flex items-center space-x-2 text-sm text-gray-600">
+                  <User className="h-4 w-4" />
+                  <span>{user.nom}</span>
+                </div>
+                <Button
+                  onClick={handleLogout}
+                  variant="outline"
+                  size="sm"
+                  className="text-red-600 border-red-600 hover:bg-red-50"
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Déconnexion
+                </Button>
+              </div>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -81,11 +111,28 @@ export function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <Button asChild className="bg-red-600 hover:bg-red-700 w-fit">
-                <Link href="/demande-service" onClick={() => setIsOpen(false)}>
-                  Demander un devis
-                </Link>
-              </Button>
+              
+              {/* Mobile user info and logout */}
+              {isAuthenticated && user && (
+                <div className="pt-4 border-t border-gray-200">
+                  <div className="flex items-center space-x-2 text-sm text-gray-600 mb-3">
+                    <User className="h-4 w-4" />
+                    <span>Connecté en tant que: {user.nom}</span>
+                  </div>
+                  <Button
+                    onClick={() => {
+                      handleLogout()
+                      setIsOpen(false)
+                    }}
+                    variant="outline"
+                    size="sm"
+                    className="text-red-600 border-red-600 hover:bg-red-50 w-fit"
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Déconnexion
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         )}

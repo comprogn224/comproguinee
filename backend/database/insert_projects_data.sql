@@ -1,0 +1,67 @@
+-- Insertion de données d'exemple pour la table projets
+-- Com'Pro Guinée
+
+USE comprogn;
+
+-- Insérer 4 projets d'exemple avec des données réalistes
+INSERT INTO `projets` (`titre`, `description`, `description_courte`, `client`, `secteur`, `technologies`, `image_principale`, `images_galerie`, `url_projet`, `date_debut`, `date_fin`, `statut`, `featured`, `ordre_affichage`) VALUES
+
+('Site Web E-commerce GuinéaShop', 
+'Développement complet d\'une plateforme e-commerce moderne pour la vente en ligne de produits guinéens. Le projet incluait la création d\'un design responsive, l\'intégration d\'un système de paiement mobile money, la gestion des stocks et un tableau de bord administrateur complet. Nous avons également mis en place une stratégie SEO et une campagne de lancement sur les réseaux sociaux.',
+'Plateforme e-commerce complète avec paiement mobile money et gestion des stocks',
+'GuinéaShop SARL',
+'E-commerce',
+'["Next.js", "React", "Node.js", "MySQL", "Stripe", "Orange Money API"]',
+'/images/projects/guineashop-main.jpg',
+'["/images/projects/guineashop-1.jpg", "/images/projects/guineashop-2.jpg", "/images/projects/guineashop-3.jpg"]',
+'https://guineashop.gn',
+'2024-01-15',
+'2024-03-20',
+'termine',
+TRUE,
+1),
+
+('Campagne Digitale Banque Populaire', 
+'Création et gestion d\'une campagne publicitaire digitale complète pour le lancement du nouveau service bancaire mobile. Le projet comprenait la production de contenus visuels et vidéos, la gestion des réseaux sociaux, la création de landing pages et le suivi des performances avec des rapports détaillés.',
+'Campagne publicitaire digitale multi-canaux pour service bancaire mobile',
+'Banque Populaire de Guinée',
+'Banque/Finance',
+'["Facebook Ads", "Google Ads", "Instagram", "WordPress", "Analytics"]',
+'/images/projects/bpg-campaign-main.jpg',
+'["/images/projects/bpg-1.jpg", "/images/projects/bpg-2.jpg", "/images/projects/bpg-3.jpg", "/images/projects/bpg-4.jpg"]',
+'https://mobile.bpg.gn',
+'2024-02-01',
+'2024-04-30',
+'termine',
+TRUE,
+2),
+
+('Application Mobile FoodDelivery Conakry', 
+'Développement d\'une application mobile native pour la livraison de nourriture à Conakry. L\'app inclut la géolocalisation, le paiement en ligne, un système de notation des restaurants et un tableau de bord pour les livreurs. Interface utilisateur intuitive avec support multilingue français/soussou.',
+'Application mobile de livraison de nourriture avec géolocalisation et paiement intégré',
+'FoodDelivery Conakry',
+'Restauration/Livraison',
+'["React Native", "Firebase", "Google Maps API", "Orange Money", "Push Notifications"]',
+'/images/projects/fooddelivery-main.jpg',
+'["/images/projects/fooddelivery-1.jpg", "/images/projects/fooddelivery-2.jpg", "/images/projects/fooddelivery-3.jpg"]',
+'https://app.fooddeliveryconakry.com',
+'2024-03-10',
+'2024-06-15',
+'termine',
+FALSE,
+3),
+
+('Refonte Site Web Ministère du Tourisme', 
+'Refonte complète du site web institutionnel du Ministère du Tourisme avec un design moderne, une architecture d\'information optimisée et un système de gestion de contenu. Intégration d\'une galerie interactive des sites touristiques, d\'un système de réservation et d\'une section actualités. Formation du personnel incluse.',
+'Refonte complète du site institutionnel avec CMS et galerie interactive',
+'Ministère du Tourisme de Guinée',
+'Gouvernement/Tourisme',
+'["WordPress", "PHP", "MySQL", "JavaScript", "Bootstrap", "SEO"]',
+'/images/projects/tourisme-main.jpg',
+'["/images/projects/tourisme-1.jpg", "/images/projects/tourisme-2.jpg", "/images/projects/tourisme-3.jpg", "/images/projects/tourisme-4.jpg"]',
+'https://tourisme.gov.gn',
+'2024-04-01',
+'2024-07-30',
+'en_cours',
+TRUE,
+4);
