@@ -1,13 +1,17 @@
+'use client';
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, Users, Target, Zap } from 'lucide-react'
 import Link from "next/link"
 import Image from "next/image"
 import { TestimonialsSection } from '@/components/TestimonialsSection'
+import { SplashScreen } from '@/components/splash-screen'
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
+      <SplashScreen />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-red-600 to-red-700 text-white py-20">
         <div className="container mx-auto px-4">
